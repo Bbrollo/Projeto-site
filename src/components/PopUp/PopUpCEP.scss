@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+.fundo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+  
+.conteudo-popup {
+    position: relative;
+    background: white;
+    padding: 48px 32px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+}
+  
+.btnFechar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #EEEEEE;
+    color: #8A8A8A;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+  
+.btnFechar:hover {
+    background: #d0cbcb;
+}
+
+.tituloPop{
+    height: 400;
+    font-size: 18px;
+}
+.inputDados{
+     border: 1px solid #EEEEEE; 
+     height: 40px;
+     width: 100%;
+     padding-left: 10px;
+}
+.cidadesEstado{
+    display: flex;
+    gap: 45px;
+    margin-top: 10px;
+    
+}
+.salvarEndereco{
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    background: #B11B26;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    padding: 18px 12px;
+}
+.salvarEndereco:hover{
+    background: #830d15;
+}
+  
