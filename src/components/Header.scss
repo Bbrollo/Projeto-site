@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+.local {
+    color: white;
+    background-color: #B11B26;
+    padding-top: 10px;
+    padding-right: 24px;
+    padding-bottom: 10px;
+    padding-left: 24px;
+    width: auto;
+    text-align: center;
+}
+.linkLocal{
+    text-decoration: underline;
+    background-color: #B11B26;
+    color: white;
+}
+.linkLocal:hover{
+    color: rgb(224, 214, 214)
+}
+#cabecalho {
+    padding-top: 24px;
+    padding-right: 80px;
+    padding-bottom: 24px;
+    padding-left: 80px;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+#cabecalho .left { 
+    display: flex; /* Alinha logo e o primeiro nav lado a lado */
+    gap: 20px; /* Espaço entre logo e nav */
+  }
+
+#cabecalho img {
+    margin-right: 24px; 
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+    padding-top: 5px; 
+    width: 1405;
+}
+.navIcos {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  
+.navCabecalho, .navCabecalhoOutlet{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+}
+.navCabecalhoOutlet{
+    color: #B11B26;
+}
+.navCabecalho:hover{
+    color: rgb(224, 214, 214);
+}
+.navCabecalhoOutlet:hover{
+    color: #830d15;
+}
+
