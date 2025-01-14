@@ -8,12 +8,16 @@
     z-index: 10; 
     top: 0;
     width: 100%;
+    height: 40px;
   }
   
   .slider-container {
     position: relative;
-    margin-top: -5px; // Ajuste para sobreposição
+    margin-top: -5px; 
     z-index: 5;
+    width: 100%;
+    overflow: hidden; 
+    box-sizing: border-box; 
   }
   
   .imgBanner {
@@ -25,7 +29,7 @@
 
   .slick-dots {
     position: absolute;
-    top: 900px; 
+    top: 90%; 
     left: 50%;
     transform: translateX(-50%); 
     z-index: 10; 

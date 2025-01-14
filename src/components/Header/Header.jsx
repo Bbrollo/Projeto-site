@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Header.scss';
 import PopUpCEP from 'C:\\Users\\Usuario\\Desktop\\WECODE\\wecode-fase2-dev-front-end\\src\\components\\PopUp\\PopUpCEP'
+import useIsMobile from '../../isMobile';
+
 
 const Header = () => {
   const [cep, setCep] = useState(''); // Estado para armazenar o CEP digitado
@@ -8,6 +10,9 @@ const Header = () => {
   const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
   const [error, setError] = useState(null); // Estado para armazenar erros
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const isMobile = useIsMobile();
+
   // Função para buscar os dados da API com base no CEP
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -47,13 +52,33 @@ const Header = () => {
       });
   };
 
+  
+
   return (
     <header>
       <div className="local">
         Você está em {address ? `${cep} - ${address.uf}` : 'Local indefinido'}{' '}
         <a href="#" className="linkLocal" onClick={handleOpenPopup}>Alterar</a>
       </div>
-      <div id="cabecalho">
+     
+      {isMobile ? (
+        <div id="cabecalho-mobile">
+          <nav className='navMobile'>
+            <div className='left-mobile'>
+              <a href="#"><img src="/static/images/icone-search.png" alt="Buscar" /></a>
+              <a href="#"><img src="/static/images/icone-menu.png" alt="Menu" /></a>
+            </div>
+            <div className='center-mobile'>
+              <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
+            </div>
+            <div className='right-mobile'>
+            <a href="#"><img src="/static/images/icone-conta.png" alt="Conta" /></a>
+            <a href="#"><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
+            </div>   
+          </nav>         
+        </div>
+      ) : (
+        <div id="cabecalho">
         <div className='left'>
           <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
           <nav>
@@ -69,6 +94,9 @@ const Header = () => {
           <a href="#"><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
         </nav>
       </div>
+      )}
+      
+      
 
        <PopUpCEP isOpen={isPopupOpen} onClose={handleClosePopup} />
     </header>

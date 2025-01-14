@@ -9,13 +9,14 @@
     padding-left: 24px;
     width: 100%;
     text-align: center;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .linkLocal{
     text-decoration: underline;
     background-color: #B11B26;
     color: white;
+    margin: 0;
 }
 .linkLocal:hover{
     color: rgb(224, 214, 214)
@@ -23,7 +24,7 @@
 
 @media (max-width: 1008px) {
     .local{
-        padding-right: 25%;
+        box-sizing: border-box;
     }
 }
 #cabecalho {
@@ -74,3 +75,18 @@ nav {
     color: #830d15;
 }
 
+
+.navMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px; /* Adicionando um padding controlado */
+    width: 100%;
+    margin: 0; /* Garantir que não haja margem extra */
+    box-sizing: border-box; 
+    padding-top: 10px;
+}
+.right-mobile, .left-mobile{
+   display: flex;
+   gap: 10px;
+}
