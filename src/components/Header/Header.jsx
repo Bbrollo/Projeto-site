@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import PopUpCEP from 'C:\\Users\\Usuario\\Desktop\\WECODE\\wecode-fase2-dev-front-end\\src\\components\\PopUp\\PopUpCEP'
+import PopUpCEP from '../PopUp/PopUpCEP.jsx'
 import useIsMobile from '../../isMobile';
 
 
@@ -13,13 +13,16 @@ const Header = () => {
 
   const isMobile = useIsMobile();
 
-  // Função para buscar os dados da API com base no CEP
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
   };
-  // Função para fechar o popup
   const handleClosePopup = () => {
     setIsPopupOpen(false);
+  };
+
+  const handleSaveCEP = (newCep) => {
+    setCep(newCep); // Atualiza o estado do CEP
+    getApi(newCep); // Chama a função que busca os dados com o novo CEP
   };
 
   const getApi = () => {
@@ -57,7 +60,7 @@ const Header = () => {
   return (
     <header>
       <div className="local">
-        Você está em {address ? `${cep} - ${address.uf}` : 'Local indefinido'}{' '}
+        Você está em {address ? `${cep} - ${address.uf}` : 'São Paulo'}{' '}
         <a href="#" className="linkLocal" onClick={handleOpenPopup}>Alterar</a>
       </div>
      
@@ -98,7 +101,9 @@ const Header = () => {
       
       
 
-       <PopUpCEP isOpen={isPopupOpen} onClose={handleClosePopup} />
+       <PopUpCEP isOpen={isPopupOpen} 
+        onClose={handleClosePopup} 
+        onSaveCEP={handleSaveCEP} />
     </header>
   );
 };

@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './PopUpCEP.scss';
 
-const Popup = ({ isOpen, onClose }) => {
-  if (!isOpen) return null; // Retorna null se o popup não estiver ativo
+const Popup = ({ isOpen, onClose, onSaveCEP }) => {
+  const [cepInput, setCepInput] = useState('');
+
+  if (!isOpen) return null;
+
+ const handleSaveCEP = () => {
+    if (cepInput) {
+      onSaveCEP(cepInput); // Chama a função passada de volta para o Header
+      onClose(); // Fecha o popup
+    }
+  };
 
   return (
     <div className="fundo-popup">
@@ -11,7 +20,8 @@ const Popup = ({ isOpen, onClose }) => {
         <p className='tituloPop'>Personalize sua experiência e encontre produtos perto de você</p>
         <div>
             <p>Código postal*</p>
-            <input type="text" name="codPostal" id="codPostal" className='inputDados' placeholder='00000-000'/>
+            <input type="text" name="codPostal" id="codPostal" className='inputDados' placeholder='00000-000' value={cepInput}
+            onChange={(e) => setCepInput(e.target.value)}/>
         </div>
         <div className="cidadesEstado">
             <div>
@@ -27,7 +37,7 @@ const Popup = ({ isOpen, onClose }) => {
             </label>
         </div>
         </div>
-        <input type="button" value="Salvar endereço" className='salvarEndereco' />
+        <input type="button" value="Salvar endereço" className='salvarEndereco' onClick={handleSaveCEP}/>
       </div>
     </div>
   );
