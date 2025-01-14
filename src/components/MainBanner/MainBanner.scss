@@ -1,0 +1,42 @@
+.bannerRelativer{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.headerRelativo {
+    position: fixed; 
+    z-index: 10; 
+    top: 0;
+    width: 100%;
+  }
+  
+  .slider-container {
+    position: relative;
+    margin-top: -5px; // Ajuste para sobreposição
+    z-index: 5;
+  }
+  
+  .imgBanner {
+    width: 100%;
+    height: 50%; 
+    object-fit: cover; 
+    position: relative;
+  }
+
+  .slick-dots {
+    position: absolute;
+    top: 900px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 10; 
+  }
+
+@media (max-width: 1008px) {
+    .slider-container{
+        margin-top: 40px;
+    }
+    .slick-dots{
+        top: 700px;
+       left: 85%;
+    }
+}

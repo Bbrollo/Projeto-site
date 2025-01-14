@@ -54,8 +54,7 @@ const Header = () => {
         <a href="#" className="linkLocal" onClick={handleOpenPopup}>Alterar</a>
       </div>
       <div id="cabecalho">
-
-        <div class='left'>
+        <div className='left'>
           <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
           <nav>
             <a href="#" className="navCabecalho">Produto</a>

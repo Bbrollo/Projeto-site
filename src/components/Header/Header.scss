@@ -7,9 +7,11 @@
     padding-right: 24px;
     padding-bottom: 10px;
     padding-left: 24px;
-    width: auto;
+    width: 100%;
     text-align: center;
+    box-sizing: border-box
 }
+
 .linkLocal{
     text-decoration: underline;
     background-color: #B11B26;
@@ -17,6 +19,12 @@
 }
 .linkLocal:hover{
     color: rgb(224, 214, 214)
+}
+
+@media (max-width: 1008px) {
+    .local{
+        padding-right: 25%;
+    }
 }
 #cabecalho {
     padding-top: 24px;
@@ -26,6 +34,7 @@
     display: flex; 
     align-items: center; 
     justify-content: space-between;
+    position: relative;
 }
 #cabecalho .left { 
     display: flex; /* Alinha logo e o primeiro nav lado a lado */
