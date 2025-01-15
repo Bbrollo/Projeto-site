@@ -45,6 +45,7 @@ function AutoPlay() {
           )}
           </Slider>
         </div>
+        <input type="button" value="Conheça agora!" className="btn-conheca-agora" />
     </div> 
   );
 }

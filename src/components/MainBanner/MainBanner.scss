@@ -35,6 +35,27 @@
     z-index: 10; 
   }
 
+  .btn-conheca-agora{
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%);
+    z-index: 10;
+    padding: 12px 24px;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    box-shadow: 0px 0px 12px 0px #00000029;
+    background-color: #ffffff20;
+    text-decoration: underline;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .btn-conheca-agora:hover{
+    background-color: #6f6d6d29;
+    color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+  }
+
 @media (max-width: 1008px) {
     .slider-container{
         margin-top: 40px;
@@ -42,5 +63,9 @@
     .slick-dots{
         top: 700px;
        left: 85%;
+    }
+    .btn-conheca-agora{
+      left: 25%;
+      top: 90%;
     }
 }
