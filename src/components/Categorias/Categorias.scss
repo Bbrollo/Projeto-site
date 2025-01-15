@@ -4,7 +4,6 @@
     position: relative;
     bottom: 5px;
     padding-bottom: 70px;
-    overflow: hidden; 
     box-sizing: border-box;
 }
 h2.categorias{
@@ -18,9 +17,11 @@ div.categorias{
     justify-content: space-between;
     padding-left: 70px;
     padding-right: 70px;
+    gap: 20px;
 }
 .img-categ{
     border-radius: 5px;
+    width: 100%;
 }
 @media(max-width: 1008px){
     .img-categ{
@@ -38,6 +39,7 @@ div.categorias{
     .categorias{
         bottom: 20px;
         padding-bottom: 50px;
+        overflow: hidden
     }
 }
 .link-categ{

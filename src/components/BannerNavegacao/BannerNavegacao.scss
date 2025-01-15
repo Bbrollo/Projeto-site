@@ -1,0 +1,14 @@
+.container-img-flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 100%;
+    width: 1200px;
+    background: white;
+    position: relative;
+    bottom: 10px;
+}
+.imagem-nav{
+    max-width: 100%;
+    display: block;
+}
