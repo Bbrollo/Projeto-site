@@ -3,12 +3,35 @@
     justify-content: space-between;
     gap: 16px;
     max-width: 100%;
-    width: 1200px;
+    width: 1920px;
     background: white;
     position: relative;
     bottom: 10px;
 }
-.imagem-nav{
+.imagem-nav-1, .imagem-nav-2{
     max-width: 100%;
     display: block;
+}
+.imagem-nav-1{
+    width: 65%;
+    height: 700px;
+}
+.imagem-nav-2{
+    width: 35%;
+    height: 700px;
+}
+
+@media(max-width: 1008px){
+    .container-img-flex-mobile{
+        background-color: white;
+        max-width: 1008px;
+        display: flex;
+        flex-wrap: wrap;  
+        gap: 16px; 
+        position: relative;
+        bottom: 20px;
+    }
+    .img-nav-mobile{
+        width: 100%;
+    }
 }
