@@ -5,6 +5,7 @@ import Header from './components/Header/Header.jsx';
 import MainBanner from './components/MainBanner/MainBanner.jsx';
 import Categorias from './components/Categorias/Categorias.jsx'
 import BannerNavegacao from './components/BannerNavegacao/BannerNavegacao.jsx'
+import VitrineLancamento from './components/VitrineLancamento/VitrineLancamento.jsx'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <MainBanner/>
       <Categorias/>
       <BannerNavegacao/>
+      <VitrineLancamento/>
     </div>
   );
 }
