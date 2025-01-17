@@ -1,0 +1,72 @@
+.container-newsletter{
+    background: #FFE9DC;
+    padding: 32px 16px;
+    position: relative;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 38px;
+    width: 100%;
+}
+.container-inputs-newsletter{
+    display: flex;
+    gap: 20px;
+}
+.texto-newsletter{
+    color: #B11B26;
+    font-size: 18px;
+    font-weight: 400;
+}
+.input-email{
+    padding: 12px 24px;
+    width: 300px;
+    height: 46px;
+    border: 1px solid #CECECE;
+}
+.btn-enviar-newsletter{
+    padding: 6px;
+    background-color: #B11B26;
+    color: #FFFFFF;
+    border: none;
+    width: 300px;
+    height: 46px;
+}
+.btn-enviar-newsletter:hover{
+    cursor: pointer;
+    background-color: #830d15;
+}
+
+.container-codigo-desconto{
+    background-color: #FFFFFF;
+    border: 1px dashed #CECECE;
+    height: 46px;
+    width: 356px;
+    border-radius: 1000px;
+    color: #B11B26;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    
+}
+.btn-copiar-desconto{
+    background-color: #B11B26;
+    width: 144px;
+    height: 46px;
+    border: 1px solid #B11B26;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.btn-copiar-desconto:hover{
+    background-color: #830d15;
+}
+.codigo-desconto-texto {
+    flex: 1; 
+    text-align: center; 
+}

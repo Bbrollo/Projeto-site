@@ -1,0 +1,99 @@
+.container-blog{
+    background: #F7F7F7;
+    width: 100%;
+    position: relative;
+    bottom: 30px;
+    padding: 0 10px;
+}
+
+.slider-custom-blog{
+    padding-left: 70px;
+}
+.slider-custom-blog a{
+    text-decoration: none;
+    overflow: hidden;
+}
+.conheca-mais{
+    padding-left: 70px;
+    margin: 0;
+}
+h2.conheca-mais{
+    font-weight: 400;
+    font-size: 28px;
+    color: #1D1D1D;
+    line-height: 38.13px;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+p.conheca-mais{
+    color: #8A8A8A;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 18px;
+    padding-bottom: 35px;
+}
+.titulo-blog{
+    font-size: 28px;
+    font-weight: 400;
+    color: #1D1D1D;
+}
+.texto-blog{
+    color: #8A8A8A;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.saiba-mais-blog{
+    text-decoration: underline;
+    color: #1D1D1D;
+    font-size: 16px;
+    font-weight: 300;
+}
+.container-link {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+    width: 300px;
+    max-width: 100%;
+    overflow: hidden; 
+}
+.img-blog{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+@media (max-width: 480px) {
+    .container-blog{
+        bottom: 50px;
+    }
+    .conheca-mais{
+        padding-left: 20px;
+    }
+    .slider-custom-blog{
+        padding-left: 20px;
+    }
+    .container-link {
+        width: 100%; 
+    }
+
+    .titulo-blog {
+        font-size: 16px; /* Tamanho menor para o título */
+    }
+
+    .texto-blog, .saiba-mais-blog {
+        font-size: 12px; /* Texto mais compacto */
+    }
+    .custom-dots{
+        left: 150px;
+        bottom: 800px
+    }
+    .img-blog{
+        overflow: hidden;
+        width: 361px;
+        height: 241.38px;
+    }
+    .texto-blog{
+        padding-right: 10px;
+    }
+}
