@@ -8,6 +8,7 @@ import BannerNavegacao from './components/BannerNavegacao/BannerNavegacao.jsx'
 import VitrineLancamento from './components/VitrineLancamento/VitrineLancamento.jsx'
 import Blog from './components/Blog/Blog.jsx'
 import Newsletter from './components/Newsletter/Newsletter.jsx';
+import Footer from './components/Footer/Footer.jsx';
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
       <VitrineLancamento/>
       <Blog/>
       <Newsletter/>
+      <Footer/>
     </div>
   );
 }

@@ -1,0 +1,47 @@
+footer{
+    background-color: #B11B26;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding-right: 100px;
+    text-align: center;
+    margin-top: -30px;
+    width: 100%;
+}
+.logo-bebece-footer{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.redes-sociais{
+    display: flex;
+    gap: 16px;
+}
+.links-footer{
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+.links-footer:hover{
+    color: rgb(224, 214, 214);
+}
+.titulo-link-footer{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media(max-width: 1008px){
+    footer{
+        flex-direction: column;
+        gap: 20px;
+        padding-right: 0;
+        padding-bottom: 80px;
+    }
+    .logo-bebece-footer{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        width: 400px;
+    }
+
+}
