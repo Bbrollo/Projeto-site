@@ -70,3 +70,18 @@
     flex: 1; 
     text-align: center; 
 }
+
+@media(max-width: 1008px){
+    .container-newsletter{
+        flex-direction: column;
+    }
+    .container-inputs-newsletter{
+        flex-direction: column;
+    }
+    .texto-newsletter{
+        text-align: center;
+    }
+    .input-email, .btn-enviar-newsletter{
+        width: 361px;
+    }
+}
