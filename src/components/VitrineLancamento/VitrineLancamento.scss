@@ -25,32 +25,7 @@
     width: 339.2px;
     height: 339.2px;
 }
-@media(max-width:1008px){
-    .img-lancamentos {
-        width: 220px;
-        height: 220px;
-        overflow: hidden;
-    }
-    .lancamentos{
-        padding-left: 20px;
-    }
-    .custom-slider{
-        padding-left: 20px;
 
-    }
-    #container-vitrine{
-        bottom: 40px;
-    }
-    .custom-dots {
-        display: flex; 
-        list-style: none; 
-        padding: 0; 
-        margin: 0;
-        position: absolute;
-        bottom: 765px;
-        left: 100px
-    }
-}
 .nome-produto-lancamento {
     font-size: 16px;
     font-weight: 300;
@@ -87,4 +62,58 @@
     bottom: 748%;
     left: 1720px
 }
+.container-img-vitrine{
+    position: relative;
+}
+.add-carrinho-vitrine{
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+}
+.favoritar-vitrine{
+    position: absolute;
+    right: 40px;
+    bottom: 300px;
+}
+.texto-perc-desconto{
+    color: #B11B26;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
 
+@media(max-width:1008px){
+    .img-lancamentos {
+        width: 220px;
+        height: 220px;
+        overflow: hidden;
+    }
+    .lancamentos{
+        padding-left: 20px;
+    }
+    .custom-slider{
+        padding-left: 20px;
+
+    }
+    #container-vitrine{
+        bottom: 40px;
+    }
+    .custom-dots {
+        display: flex; 
+        list-style: none; 
+        padding: 0; 
+        margin: 0;
+        position: absolute;
+        bottom: 765px;
+        left: 100px
+    }
+    .add-carrinho-vitrine{
+        left: 180px;
+    }
+    .favoritar-vitrine{
+        bottom: 180px;
+        left: 180px;
+    }
+}

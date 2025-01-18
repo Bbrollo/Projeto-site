@@ -27,7 +27,7 @@ const Newsletter = () => {
         <div className="container-newsletter">
             {isSubscribed ? (
                 <>
-                     Utilize o cupom abaixo e garanta seu desconto!
+                     <span>Utilize o cupom abaixo e garanta seu desconto!</span>
                     <div className="container-codigo-desconto">
                     <span className="codigo-desconto-texto">BEMVINDA</span>
                         <input type="button" value={copiado ? "Copiado" : "Copiar"} className="btn-copiar-desconto" onClick={copiar}/>
@@ -35,7 +35,7 @@ const Newsletter = () => {
                 </>
             ) : (
                 <>
-                    <label htmlFor="email" className="texto-newsletter" >Cadastre-se e receba 10% OFF na sua primeira compra!</label>
+                    <label htmlFor="email" className="texto-newsletter" >Cadastre-se e receba <strong>10% OFF</strong> na sua primeira compra!</label>
                     <div className="container-inputs-newsletter">
                         <input type="email" name="email" id="email" placeholder="Digite seu e-mail" className="input-email"/>
                         <input type="button" value="ENVIAR" className="btn-enviar-newsletter" onClick={sendEmailCupom}/>
