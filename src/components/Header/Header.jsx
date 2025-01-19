@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.scss';
 import PopUpCEP from '../PopUp/PopUpCEP.jsx'
 import useIsMobile from '../../isMobile';
-
+import MenuLateral from '../MenuLateral/MenuLateral.jsx';
 
 const Header = () => {
   const [cep, setCep] = useState(''); // Estado para armazenar o CEP digitado
@@ -10,6 +10,12 @@ const Header = () => {
   const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
   const [error, setError] = useState(null); // Estado para armazenar erros
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Alterna entre aberto/fechado
+};
 
   const isMobile = useIsMobile();
 
@@ -69,7 +75,7 @@ const Header = () => {
           <nav className='navMobile'>
             <div className='left-mobile'>
               <a href="#"><img src="/static/images/icone-search.png" alt="Buscar" /></a>
-              <a href="#"><img src="/static/images/icone-menu.png" alt="Menu" /></a>
+              <a onClick={toggleMenu} ><img src="/static/images/icone-menu.png" alt="Menu" /></a>
             </div>
             <div className='center-mobile'>
               <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
@@ -104,6 +110,7 @@ const Header = () => {
        <PopUpCEP isOpen={isPopupOpen} 
         onClose={handleClosePopup} 
         onSaveCEP={handleSaveCEP} />
+        <MenuLateral isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
     </header>
   );
 };

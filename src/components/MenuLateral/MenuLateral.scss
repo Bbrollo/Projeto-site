@@ -1,0 +1,98 @@
+@media(max-width:1008px){
+    .side-menu {
+        position: fixed;
+        top: 0;
+        left: -1000px; /* Esconde o menu fora da tela */
+        height: 100%;
+        width: 80%;
+        background-color: #333;
+        color: #fff;
+        transition: left 0.5s ease; /* Suaviza o movimento ao abrir/fechar */
+        z-index: 1000;
+        background-color:#fff;
+        &.open {
+            left: 0; /* Move o menu para dentro da tela */
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: black;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .menu-content {
+            padding: 24px 16px;
+            color: black;
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding-bottom: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    a{
+                        color: #1D1D1D;
+                        text-decoration: none;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .outlet-text-menu{
+                        color: #B11B26;
+                    }
+                }
+                .submenu {
+                    padding-left: 30px;
+                    li {
+                        justify-content: start;
+                    }
+
+                    a {
+                        font-weight: lighter;
+                    }
+                }
+        }
+    }
+
+        .header-menu-lateral{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 10px;
+            background-color: #fff;
+        }
+        .transparencia-menu-lateral{
+            background-color: #00000033;
+            width: 100%;
+            height: 120px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .img-menu-lateral{
+            width: 100%;
+            position: absolute;
+            z-index: -10;
+            bottom: 760px
+        }
+        .link-conheca-menu{
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 300;
+            text-decoration: underline;
+        }
+        .celebration-text-menu{
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+}
