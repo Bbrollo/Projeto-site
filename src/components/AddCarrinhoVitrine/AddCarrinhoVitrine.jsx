@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./AddCarrinhoVitrine.scss"
 import useIsMobile from '../../isMobile';
+import ProdutoCarrinho from '../../ProdutoCarrinho';
 
 
-const AddCarrinhoVitrine = ({ product, closeCarrinho }) => {
+
+const AddCarrinhoVitrine = ({ product, closeCarrinho, onAdicionarProduto }) => {
 
   const isMobile = useIsMobile();
 
@@ -25,6 +27,16 @@ const handleTamanhoSelect = (num) => {
     setTamanhoSelecionado(num);
   };
 
+    const handleAdicionar = () => {
+      const novoProduto = new ProdutoCarrinho(product.name, 
+        product.image, 
+        product.price.amount, 
+        product.price.isDiscount, 
+        40);
+      onAdicionarProduto(novoProduto); // Passa o produto para o componente Carrinho
+    };
+
+  
     return(
         <>
         {isMobile ? (
@@ -46,7 +58,7 @@ const handleTamanhoSelect = (num) => {
                                 <input type="button" value={tamanho.num} key={index} disabled={!tamanho.disponivel} className={`tamanho-opcao ${tamanho.disponivel ? "btn-tamanho-disponivel" : "btn-tamanho-indisponivel"}`} onClick={() => handleTamanhoSelect(tamanho.num)} />
                             ))}
                         </div>
-                        <button className="btn-add-carrinho-tamanho">
+                        <button className="btn-add-carrinho-tamanho" onClick={handleAdicionar}>
                             Adicionar ao carrinho <img src="\static\images\add-carrinho-branco.png" alt="" />
                         </button>
                     </div>
