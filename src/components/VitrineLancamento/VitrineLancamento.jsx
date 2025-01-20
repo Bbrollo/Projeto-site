@@ -3,13 +3,15 @@ import './VitrineLancamento.scss';
 import { getProducts } from '../../utils';
 import Slider from "react-slick";
 import useIsMobile from '../../isMobile';
+import AddCarrinhoVitrine from "../AddCarrinhoVitrine/AddCarrinhoVitrine.jsx";
 
 const VitrineLancamento = () => {
     const [products, setProducts] = useState([]);
     const isMobile = useIsMobile();
     const [favIcon, setFavIcon] = useState({});
+    const [isCarrinhoVitrineOpen, setIsCarrinhoVitrineOpen] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
-    
     const alteraFavorite = (productId) => {
         setFavIcon((prevFavIcon) => ({
             ...prevFavIcon,
@@ -17,6 +19,13 @@ const VitrineLancamento = () => {
         }));
     };
     
+    const handleAddCarrinhoClick = (product) => {
+        setSelectedProduct(product); 
+        setIsCarrinhoVitrineOpen(true);  
+    }
+    const closeCarrinhoVitrine = () => {
+        setIsCarrinhoVitrineOpen(false);
+    }
     
 
     // Configuração do Slider
@@ -83,7 +92,7 @@ const VitrineLancamento = () => {
                                     : "\\static\\images\\Favoritar-false.png"
                                     } alt="Icone adicionar ao carrinho" className="favoritar-vitrine"/>
                                 </a>
-                                <a href="">
+                                <a onClick={() => handleAddCarrinhoClick(product)}>
                                     <img src="\static\images\Adicionar-pela-vitrine.png" alt="Icone adicionar ao carrinho" className="add-carrinho-vitrine"/>
                                 </a>
                                 <span className="texto-perc-desconto">{percDesconto(product.price.isDiscount, product.price.amount)}</span>
@@ -97,6 +106,8 @@ const VitrineLancamento = () => {
                     ))}
                 </Slider>
             </div>
+            {isCarrinhoVitrineOpen && <AddCarrinhoVitrine product={selectedProduct} closeCarrinho={closeCarrinhoVitrine} />}
+
         </div>
     );
 };
