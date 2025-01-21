@@ -14,11 +14,23 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCarrinhoOpen, setIsCarrinhoOpen] = useState(false);
   const [carrinho, setCarrinho] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Carregar carrinho do localStorage ao inicializar
     const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
     setCarrinho(carrinhoAtual);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log('Scroll position:', window.scrollY); // Debug
+      setIsScrolled(window.scrollY > 0); // Atualiza o estado
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -76,7 +88,7 @@ const Header = () => {
   
 
   return (
-    <header>
+    <header className={isScrolled ? 'header-scrolled' : 'header-transparent'}>
       <div className="local">
         Você está em {address ? `${cep} - ${address.uf}` : 'São Paulo'}{' '}
         <a href="#" className="linkLocal" onClick={handleOpenPopup}>Alterar</a>
@@ -86,33 +98,33 @@ const Header = () => {
         <div id="cabecalho-mobile">
           <nav className='navMobile'>
             <div className='left-mobile'>
-              <a href="#"><img src="/static/images/icone-search.png" alt="Buscar" /></a>
-              <a onClick={toggleMenu} ><img src="/static/images/icone-menu.png" alt="Menu" /></a>
+              <a href="#"><img src={isScrolled ? "/static/images/icone-search-preto.png" : "/static/images/icone-search.png"} alt="Buscar" /></a>
+              <a onClick={toggleMenu} ><img src={isScrolled ? "/static/images/icone-menu-preto.png" : "/static/images/icone-menu.png"} alt="Menu" /></a>
             </div>
             <div className='center-mobile'>
-              <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
+              <img src={isScrolled ? "/static/images/Logo-bebece-preto.png" : "/static/images/Logo-bebece.png" } alt="Logo Bebecê" className='logo-bebece-header'/>
             </div>
             <div className='right-mobile'>
-            <a href="#"><img src="/static/images/icone-conta.png" alt="Conta" /></a>
-            <a onClick={toggleCarrinho}><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
+            <a href="#"><img src={isScrolled ? "/static/images/icone-conta-preto.png" : "/static/images/icone-conta.png"} alt="Conta" /></a>
+            <a onClick={toggleCarrinho}><img src={isScrolled ? "/static/images/icone-carrinho-preto.png" : "/static/images/icone-carrinho.png"} alt="Carrinho" /></a>
             </div>   
           </nav>         
         </div>
       ) : (
         <div id="cabecalho">
         <div className='left'>
-          <img src="/static/images/Logo-bebece.png" alt="Logo Bebecê" />
+          <img src={isScrolled ? "/static/images/Logo-bebece-preto.png" : "/static/images/Logo-bebece.png" } alt="Logo Bebecê" className='logo-bebece-header'/>
           <nav>
-            <a href="#" className="navCabecalho">Produto</a>
-            <a href="#" className="navCabecalho">Lançamentos</a>
+            <a href="#" className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}>Produto</a>
+            <a href="#" className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}>Lançamentos</a>
             <a href="#" className="navCabecalhoOutlet">Outlet</a>
           </nav>
         </div>
 
         <nav className="navIcos">
-          <a href="#"><img src="/static/images/icone-search.png" alt="Buscar" /></a>
-          <a href="#"><img src="/static/images/icone-conta.png" alt="Conta" /></a>
-          <a onClick={toggleCarrinho}><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
+          <a href="#"><img src={isScrolled ? "/static/images/icone-search-preto.png" : "/static/images/icone-search.png"} alt="Buscar" /></a>
+          <a href="#"><img src={isScrolled ? "/static/images/icone-conta-preto.png" : "/static/images/icone-conta.png"} alt="Conta" /></a>
+          <a onClick={toggleCarrinho}><img src={isScrolled ? "/static/images/icone-carrinho-preto.png" : "/static/images/icone-carrinho.png"} alt="Carrinho" /></a>
         </nav>
       </div>
       )}
