@@ -17,8 +17,9 @@
     height: fit-content;
     background: white;
     display: flex;
-    align-items: left;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 903px;
 }
 .infos-add-carrinho{
     padding: 16px 24px;
@@ -27,8 +28,9 @@
     flex-direction: column;
 }
 .img-lancamentos-add-carrinho{
-    width: 100%;
+    width: 433px;
     background-color: #F7F7F7;
+    height: 433px;
 }
 .prod-name-add-carrinho{
     font-size: 16px;
@@ -48,17 +50,23 @@
     font-weight: 400;
     position: relative;
 }
+.btn-tamanho-disponivel:hover{
+    border: 1px solid #a8a8a8;
+}
 .btn-tamanho-disponivel:focus{
     border: 1px solid #1D1D1D;
 }
 .btn-add-carrinho-tamanho{
-    padding: 15px;
+    padding: 16px;
     background-color: #B11B26;
     font-size: 14px;
     font-weight: 400;
     color: #FFFFFF;
     border: none;
     margin-top: 15px;
+}
+.btn-add-carrinho-tamanho:hover{
+    background-color: #830d15;
 }
 .tamanho-selecionado{
     font-size: 12px;
@@ -69,5 +77,59 @@
 @media (max-width: 1008px) {
     .container-AddCarrinho {
       width: 80%; 
+    }
+    .container-AddCarrinho{
+        position: absolute;
+        margin: auto;
+        height: fit-content;
+        background: white;
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+    }
+    .infos-add-carrinho{
+        padding: 16px 24px;
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+    }
+    .img-lancamentos-add-carrinho{
+        width: 100%;
+        background-color: #F7F7F7;
+    }
+    .prod-name-add-carrinho{
+        font-size: 16px;
+        font-weight: lighter;
+        padding-bottom: 20px;
+    }
+    .tamanho-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: 8px;
+        padding-top: 12px;
+    }
+    .btn-tamanho-disponivel, .btn-tamanho-indisponivel{
+        padding: 15px 16px;
+        border: 1px solid #CECECE;
+        font-size: 15px;
+        font-weight: 400;
+        position: relative;
+    }
+    .btn-tamanho-disponivel:focus{
+        border: 1px solid #1D1D1D;
+    }
+    .btn-add-carrinho-tamanho{
+        padding: 15px;
+        background-color: #B11B26;
+        font-size: 14px;
+        font-weight: 400;
+        color: #FFFFFF;
+        border: none;
+        margin-top: 15px;
+    }
+    .tamanho-selecionado{
+        font-size: 12px;
+        font-weight: 400;
+        color: #8A8A8A;
     }
 }
