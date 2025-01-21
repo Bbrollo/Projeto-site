@@ -56,7 +56,7 @@
                     flex-direction: column;
                     gap: 8px;
                 }
-                .prod-name-carrinho, .prod-preco-carrinho{
+                .prod-name-carrinho, .prod-preco-carrinho, .prod-quantidade-carrinho{
                     font-size: 14px;
                     font-weight: 400;
                 }
@@ -65,6 +65,14 @@
                     font-size: 12px;
                     font-weight: 400;
                 }
+                .btn-add-mais-menos{
+                    font-size: 15px;
+                    border: 1px solid #d3d1d1;
+                    padding:1px 7px;
+                    margin-right: 3px ;
+                    margin-left: 5px;
+                    
+                }            
                 
             }
             
@@ -89,6 +97,10 @@
         .textos-total-carrinho{
             display: flex;
             justify-content: space-between;
+        }
+        .descontos-carrinho-foot{
+            font-weight: 600;
+            color: #B11B26
         }
         .btn-finalizar-pedido{
             padding: 6px;
@@ -183,7 +195,14 @@
                         font-size: 12px;
                         font-weight: 400;
                     }
-                    
+                    .btn-add-mais-menos{
+                        font-size: 15px;
+                        border: 1px solid #d3d1d1;
+                        padding:1px 7px;
+                        margin-right: 3px ;
+                        margin-left: 5px;
+                        
+                    }                    
                 }
                 
             }

@@ -55,12 +55,13 @@ const Carrinho = ({isCarrinhoOpen, toggleCarrinho, carrinho}) => {
                                             <span className='prod-name-carrinho'>{produto.nome}</span>
                                             <span className='prod-tamanho-carrinho'>Tamanho: {produto.tamanho}</span>
                                             </div>
+                                            <span className='prod-quantidade-carrinho'>Quantidade: <a className='btn-add-mais-menos'>+</a> {produto.quantidade} <a className='btn-add-mais-menos'>-</a></span>
                                             <span className='prod-preco-carrinho'>
                                                 Preço: R$
                                                 {produto.desconto !== null ? (
-                                                    `${produto.desconto}`
+                                                    `${produto.desconto * produto.quantidade}`
                                                 ) : (
-                                                    `${produto.preco}`
+                                                    `${produto.preco * produto.quantidade}`
                                                 )}
                                             </span> 
                                     </div>
@@ -72,7 +73,7 @@ const Carrinho = ({isCarrinhoOpen, toggleCarrinho, carrinho}) => {
                 </div>
                 <div className='container-total-carrinho'>
                         <div className='textos-total-carrinho'><span>SubTotal: </span><span>{somaTotalSemDesconto()}</span></div>
-                        <div className='textos-total-carrinho'><span>Descontos: </span><span>- {somaTotalDescontos()}</span></div>
+                        <div className='textos-total-carrinho'><span>Descontos: </span><span className='descontos-carrinho-foot'>- {somaTotalDescontos()}</span></div>
                         <div className='textos-total-carrinho'><span>Total:</span><span>{total()}</span></div>
                         <button className='btn-finalizar-pedido'>Finalizar Pedido</button>
                         <a className='continuar-comprando' onClick={toggleCarrinho}>Continuar Comprando</a>
@@ -96,12 +97,13 @@ const Carrinho = ({isCarrinhoOpen, toggleCarrinho, carrinho}) => {
                                             <span className='prod-name-carrinho'>{produto.nome}</span>
                                             <span className='prod-tamanho-carrinho'>Tamanho: {produto.tamanho}</span>
                                             </div>
+                                            <span className='prod-quantidade-carrinho'>Quantidade: <a className='btn-add-mais-menos'>+</a> {produto.quantidade} <a className='btn-add-mais-menos'>-</a></span>
                                             <span className='prod-preco-carrinho'>
                                                 Preço: R$
                                                 {produto.desconto !== null ? (
-                                                    `${produto.desconto}`
+                                                    `${produto.desconto * produto.quantidade}`
                                                 ) : (
-                                                    `${produto.preco}`
+                                                    `${produto.preco * produto.quantidade}`
                                                 )}
                                             </span> 
                                     </div>
