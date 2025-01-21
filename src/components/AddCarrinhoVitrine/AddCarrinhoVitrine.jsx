@@ -29,34 +29,46 @@ const handleTamanhoSelect = (num) => {
   };
 
   
-  const addCarrinho = (product) => {
+const addCarrinho = (product) => {
     if (!product || !tamanhoSelecionado) {
-        alert("Produto ou tamanho não definido.");
-        return false;
-      }
+      alert("Produto ou tamanho não definido.");
+      return false;
+    }
+  
     // Recuperar os produtos já armazenados no localStorage
     const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
   
-    // Adicionar o novo produto ao carrinho
-    const novoProduto = {
-      nome: product.name,
-      image: product.image,
-      preco: product.price.amount,
-      desconto: product.price.isDiscount,
-      tamanho: tamanhoSelecionado,
-      quantidade: 1,
-    };
+    // Verificar se o produto já existe no carrinho com o mesmo id e tamanho
+    const produtoExistente = carrinhoAtual.find(
+      (item) => item.id === product.id && item.tamanho === tamanhoSelecionado
+    );
   
-    
-    carrinhoAtual.push(novoProduto);
+    if (produtoExistente) {
+      // Incrementar a quantidade do produto existente
+      produtoExistente.quantidade += 1;
+    } else {
+      // Adicionar o novo produto ao carrinho
+      const novoProduto = {
+        id: product.id,
+        nome: product.name,
+        image: product.image,
+        preco: product.price.amount,
+        desconto: product.price.isDiscount,
+        tamanho: tamanhoSelecionado,
+        quantidade: 1,
+      };
+      carrinhoAtual.push(novoProduto);
+    }
   
     // Salvar o carrinho atualizado no localStorage
     localStorage.setItem('carrinho', JSON.stringify(carrinhoAtual));
-
+  
+    // Atualizar o estado local do carrinho
     setCarrinho(carrinhoAtual);
-
-    console.log('Produto adicionado ao carrinho:', novoProduto);
-  }
+  
+    console.log("Produto adicionado ao carrinho:", product);
+};
+  
 
   useEffect(() => {
     const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];

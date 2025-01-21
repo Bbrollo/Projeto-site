@@ -7,6 +7,34 @@ const Carrinho = ({isCarrinhoOpen, toggleCarrinho, carrinho}) => {
     
     const isMobile = useIsMobile();
     
+    const somaTotalSemDesconto = () => {
+        const total = carrinho.reduce((acc, produto) => {
+          return acc + (produto.preco * produto.quantidade); // Soma apenas o preço sem considerar o desconto
+        }, 0);
+      
+        return total.toFixed(2); // Retorna o total com duas casas decimais
+      };
+      const somaTotalDescontos = () => {
+        const totalDescontos = carrinho.reduce((acc, produto) => {
+          if (produto.desconto) {
+            // Calcula o valor do desconto e multiplica pela quantidade
+            const desconto = (produto.preco - produto.desconto) * produto.quantidade;
+            return acc + desconto;
+          }
+          return acc; // Se não houver desconto, não altera o acumulador
+        }, 0);
+      
+        return totalDescontos.toFixed(2); // Retorna o total com duas casas decimais
+      };
+
+      const total = () => {
+        const totalSemDesconto = somaTotalSemDesconto(); 
+        const totalDescontos = somaTotalDescontos(); 
+        const totalSoma = totalSemDesconto - totalDescontos; // Subtrai o total de descontos do preço total sem desconto
+        return totalSoma.toFixed(2); // Retorna o resultado com duas casas decimais
+      };
+      
+
     return(
         <>
         {isMobile ? (
@@ -27,13 +55,28 @@ const Carrinho = ({isCarrinhoOpen, toggleCarrinho, carrinho}) => {
                                             <span className='prod-name-carrinho'>{produto.nome}</span>
                                             <span className='prod-tamanho-carrinho'>Tamanho: {produto.tamanho}</span>
                                             </div>
-                                            <span className='prod-preco-carrinho'>Preço: R${produto.preco}</span> 
+                                            <span className='prod-preco-carrinho'>
+                                                Preço: R$
+                                                {produto.desconto !== null ? (
+                                                    `${produto.desconto}`
+                                                ) : (
+                                                    `${produto.preco}`
+                                                )}
+                                            </span> 
                                     </div>
+                                <div className='teste'>content</div>
                             </div>
                         ))
                     ) : (
                         <p>O carrinho está vazio</p>
-                    )}
+                    )}        
+                </div>
+                <div className='container-total-carrinho'>
+                        <div className='textos-total-carrinho'><span>SubTotal: </span><span>{somaTotalSemDesconto()}</span></div>
+                        <div className='textos-total-carrinho'><span>Descontos: </span><span>- {somaTotalDescontos()}</span></div>
+                        <div className='textos-total-carrinho'><span>Total:</span><span>{total()}</span></div>
+                        <button className='btn-finalizar-pedido'>Finalizar Pedido</button>
+                        <a className='continuar-comprando' onClick={toggleCarrinho}>Continuar Comprando</a>
                 </div>
             </div>
         ) : (
