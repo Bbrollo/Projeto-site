@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddCarrinhoVitrine.scss"
 import useIsMobile from '../../isMobile';
 import ProdutoCarrinho from '../../ProdutoCarrinho';
@@ -10,6 +10,7 @@ const AddCarrinhoVitrine = ({ product, closeCarrinho }) => {
   const isMobile = useIsMobile();
 
   const [tamanhoSelecionado, setTamanhoSelecionado] = useState(null);
+  const [carrinho, setCarrinho] = useState([]);
 
   const tamanho = [
     {num:34, disponivel:true}, 
@@ -51,9 +52,16 @@ const handleTamanhoSelect = (num) => {
   
     // Salvar o carrinho atualizado no localStorage
     localStorage.setItem('carrinho', JSON.stringify(carrinhoAtual));
-  
+
+    setCarrinho(carrinhoAtual);
+
     console.log('Produto adicionado ao carrinho:', novoProduto);
   }
+
+  useEffect(() => {
+    const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
+    setCarrinho(carrinhoAtual);
+  }, []);
 
    const verCarrinho = () => {
     // Recuperar os produtos do carrinho

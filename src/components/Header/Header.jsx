@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.scss';
 import PopUpCEP from '../PopUp/PopUpCEP.jsx'
 import useIsMobile from '../../isMobile';
 import MenuLateral from '../MenuLateral/MenuLateral.jsx';
+import Carrinho from '../Carrinho/Carrinho.jsx';
 
 const Header = () => {
   const [cep, setCep] = useState(''); // Estado para armazenar o CEP digitado
@@ -11,11 +12,22 @@ const Header = () => {
   const [error, setError] = useState(null); // Estado para armazenar erros
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCarrinhoOpen, setIsCarrinhoOpen] = useState(false);
+  const [carrinho, setCarrinho] = useState([]);
 
+  useEffect(() => {
+    // Carregar carrinho do localStorage ao inicializar
+    const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
+    setCarrinho(carrinhoAtual);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Alterna entre aberto/fechado
-};
+  };
+
+  const toggleCarrinho =() => {
+    setIsCarrinhoOpen(!isCarrinhoOpen)
+  }
 
   const isMobile = useIsMobile();
 
@@ -82,7 +94,7 @@ const Header = () => {
             </div>
             <div className='right-mobile'>
             <a href="#"><img src="/static/images/icone-conta.png" alt="Conta" /></a>
-            <a href="#"><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
+            <a onClick={toggleCarrinho}><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
             </div>   
           </nav>         
         </div>
@@ -100,7 +112,7 @@ const Header = () => {
         <nav className="navIcos">
           <a href="#"><img src="/static/images/icone-search.png" alt="Buscar" /></a>
           <a href="#"><img src="/static/images/icone-conta.png" alt="Conta" /></a>
-          <a href="#"><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
+          <a onClick={toggleCarrinho}><img src="/static/images/icone-carrinho.png" alt="Carrinho" /></a>
         </nav>
       </div>
       )}
@@ -111,6 +123,7 @@ const Header = () => {
         onClose={handleClosePopup} 
         onSaveCEP={handleSaveCEP} />
         <MenuLateral isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <Carrinho isCarrinhoOpen={isCarrinhoOpen} toggleCarrinho={toggleCarrinho} carrinho={carrinho}/>
     </header>
   );
 };

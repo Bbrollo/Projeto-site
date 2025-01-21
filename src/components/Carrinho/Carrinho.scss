@@ -1,0 +1,74 @@
+@media(max-width:1008px){
+    .carrinho {
+        position: fixed;
+        top: 0;
+        right: -1000px; /* Esconde o menu fora da tela */
+        height: 100%;
+        width: 80%;
+        background-color: #333;
+        color: #fff;
+        transition: right 0.5s ease; /* Suaviza o movimento ao abrir/fechar */
+        z-index: 1000;
+        background-color:#fff;
+        &.open {
+            right: 0; /* Move o menu para dentro da tela */
+        }
+        .header-carrinho{
+            display: flex;
+            justify-content: space-between;
+            padding-right: 16px;
+            padding-left: 16px;
+            padding-bottom: 8px;
+            padding-top: 15px;
+            .close-button-carrinho {
+                background: none;
+                border: none;
+                color: #1D1D1D;
+                font-size: 24px;
+                cursor: pointer;
+                margin: 0;
+            }
+            .titulo-carrinho{
+                color: black;
+                font-size: 24px;
+                font-weight: 400;
+            }
+        }
+        .container-produtos-carrinho{
+            color: #1D1D1D;
+            padding: 16px;
+            .produtp-itens{
+                border: 1px solid #EEEEEE;
+                display: flex;
+                justify-content: space-between;
+                padding: 8px;
+                .img-prod-carrinho{
+                    width: 100px;
+                    height: auto;
+                    background-color: #F7F7F7;
+                    margin-right: 10px;
+                }
+                .nome-tamanho-preco{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    .nome-tamanho{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+                    .prod-name-carrinho, .prod-preco-carrinho{
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+                    .prod-tamanho-carrinho{
+                        color: #8A8A8A;
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+        
+    }
+}
