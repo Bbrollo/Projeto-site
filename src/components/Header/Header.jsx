@@ -177,7 +177,7 @@ const Header = () => {
                   alt="Carrinho"
                 />
                 {getTotalItens() > 0 && (
-                <span className="carrinho-contador">{getTotalItens()}</span>
+                <span className={isScrolled ? "carrinho-contador-black" : "carrinho-contador"}>{getTotalItens()}</span>
                 )}
               </a>
             </div>
@@ -245,7 +245,7 @@ const Header = () => {
                 alt="Carrinho"
               />
               {getTotalItens() > 0 && (
-              <span className="carrinho-contador">{getTotalItens()}</span>
+              <span className={isScrolled ? "carrinho-contador-black" : "carrinho-contador"}>{getTotalItens()}</span>
               )}
             </a>
           </nav>

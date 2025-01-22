@@ -191,8 +191,6 @@ const AddCarrinhoVitrine = ({ product, closeCarrinho }) => {
                 Adicionar ao carrinho{" "}
                 <img src="\static\images\add-carrinho-branco.png" alt="" />
               </button>
-              <button onClick={verCarrinho}>verCarrinho</button>
-              <button onClick={limparCarrinho}>Limpar</button>
             </div>
           </div>
         </div>
