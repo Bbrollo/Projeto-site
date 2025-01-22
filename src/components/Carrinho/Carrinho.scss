@@ -3,7 +3,7 @@
     top: 0;
     right: -3000px; /* Esconde o menu fora da tela */
     height: 100%;
-    width: 20%;
+    width: 22%;
     background-color: #333;
     color: #fff;
     transition: right 0.5s ease; /* Suaviza o movimento ao abrir/fechar */
@@ -36,13 +36,17 @@
     .container-produtos-carrinho{
         color: #1D1D1D;
         padding: 16px;
+        max-height: calc(100% - 220px); 
+        overflow-y: auto;
+        height: 70%;
         .produtp-itens{
             border: 1px solid #EEEEEE;
             padding: 8px;
             display: flex;
-            justify-content: space-between;
+            justify-content: left;
+            gap: 5px;
             .img-prod-carrinho{
-                width: 100px;
+                width: 150px;
                 height: auto;
                 background-color: #F7F7F7;
                 margin-right: 10px;
@@ -94,6 +98,7 @@
         bottom: 0;
         flex-direction: column;
         gap: 16px;
+        z-index: 10;
         .textos-total-carrinho{
             display: flex;
             justify-content: space-between;
@@ -166,6 +171,9 @@
         .container-produtos-carrinho{
             color: #1D1D1D;
             padding: 16px;
+            max-height: calc(100% - 220px); 
+            overflow-y: auto;
+            height: 70%;
             .produtp-itens{
                 border: 1px solid #EEEEEE;
                 padding: 8px;
@@ -223,6 +231,7 @@
             bottom: 0;
             flex-direction: column;
             gap: 16px;
+            z-index: 10;
             .textos-total-carrinho{
                 display: flex;
                 justify-content: space-between;

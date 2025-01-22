@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Carrinho.scss";
 import useIsMobile from "../../isMobile";
 
-const Carrinho = ({ isCarrinhoOpen, toggleCarrinho, carrinho }) => {
+const Carrinho = ({ isCarrinhoOpen, toggleCarrinho, carrinho, onUpdateCarrinho }) => {
   const isMobile = useIsMobile();
 
   const somaTotalSemDesconto = () => {
@@ -64,9 +64,9 @@ const Carrinho = ({ isCarrinhoOpen, toggleCarrinho, carrinho }) => {
                       </span>
                     </div>
                     <span className="prod-quantidade-carrinho">
-                      Quantidade: <a className="btn-add-mais-menos">+</a>{" "}
+                      Quantidade: <a className="btn-add-mais-menos" onClick={() => onUpdateCarrinho(produto.id, 1)}>+</a>{" "}
                       {produto.quantidade}{" "}
-                      <a className="btn-add-mais-menos">-</a>
+                      <a className="btn-add-mais-menos" onClick={() => onUpdateCarrinho(produto.id, -1)}>-</a>
                     </span>
                     <span className="prod-preco-carrinho">
                       Preço: R$
@@ -131,9 +131,9 @@ const Carrinho = ({ isCarrinhoOpen, toggleCarrinho, carrinho }) => {
                       </span>
                     </div>
                     <span className="prod-quantidade-carrinho">
-                      Quantidade: <a className="btn-add-mais-menos">+</a>{" "}
+                      Quantidade: <a className="btn-add-mais-menos" onClick={() => onUpdateCarrinho(produto.id, 1)}>+</a>{" "}
                       {produto.quantidade}{" "}
-                      <a className="btn-add-mais-menos">-</a>
+                      <a className="btn-add-mais-menos" onClick={() => onUpdateCarrinho(produto.id, -1)}>-</a>
                     </span>
                     <span className="prod-preco-carrinho">
                       Preço: R$

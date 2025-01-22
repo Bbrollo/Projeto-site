@@ -20,7 +20,19 @@ const Header = () => {
     // Carregar carrinho do localStorage ao inicializar
     const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")) || [];
     setCarrinho(carrinhoAtual);
+
+    const savedCep = localStorage.getItem("userCEP");
+    if (savedCep) {
+    setCep(savedCep); // Atualiza o estado do CEP
+    getApi(savedCep); // Chama a função para buscar dados do CEP já armazenado
+  }
   }, []);
+
+
+  
+  const getTotalItens = () => {
+    return carrinho.reduce((total, item) => total + item.quantidade, 0);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +44,20 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleUpdateCarrinho = (produtoId, quantidade) => {
+    setCarrinho((prevCarrinho) => {
+      return prevCarrinho
+        .map((produto) =>
+          produto.id === produtoId
+            ? { ...produto, quantidade: produto.quantidade + quantidade }
+            : produto
+        )
+        .filter((produto) => produto.quantidade > 0); // Remove produtos com quantidade <= 0
+    });
+  };
+  
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Alterna entre aberto/fechado
@@ -55,14 +81,14 @@ const Header = () => {
     getApi(newCep); // Chama a função que busca os dados com o novo CEP
   };
 
-  const getApi = () => {
+  const getApi = (cep) => {
     if (!cep) {
       setError("Por favor, insira um CEP válido.");
       return;
     }
     setLoading(true);
     setError(null);
-
+  
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => {
         if (!response.ok) {
@@ -141,7 +167,7 @@ const Header = () => {
                   alt="Conta"
                 />
               </a>
-              <a onClick={toggleCarrinho}>
+              <a onClick={toggleCarrinho} className="icone-carriho-quantidade">
                 <img
                   src={
                     isScrolled
@@ -150,6 +176,9 @@ const Header = () => {
                   }
                   alt="Carrinho"
                 />
+                {getTotalItens() > 0 && (
+                <span className="carrinho-contador">{getTotalItens()}</span>
+                )}
               </a>
             </div>
           </nav>
@@ -206,7 +235,7 @@ const Header = () => {
                 alt="Conta"
               />
             </a>
-            <a onClick={toggleCarrinho}>
+            <a onClick={toggleCarrinho} className="icone-carriho-quantidade">
               <img
                 src={
                   isScrolled
@@ -215,6 +244,9 @@ const Header = () => {
                 }
                 alt="Carrinho"
               />
+              {getTotalItens() > 0 && (
+              <span className="carrinho-contador">{getTotalItens()}</span>
+              )}
             </a>
           </nav>
         </div>
@@ -230,6 +262,7 @@ const Header = () => {
         isCarrinhoOpen={isCarrinhoOpen}
         toggleCarrinho={toggleCarrinho}
         carrinho={carrinho}
+        onUpdateCarrinho={handleUpdateCarrinho}
       />
     </header>
   );
