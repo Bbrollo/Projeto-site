@@ -155,7 +155,7 @@ const Carrinho = ({ isCarrinhoOpen, toggleCarrinho, carrinho, onUpdateCarrinho }
             </div>
             <div className="textos-total-carrinho">
               <span>Descontos: </span>
-              <span>- {somaTotalDescontos()}</span>
+              <span className="descontos-carrinho-foot">- {somaTotalDescontos()}</span>
             </div>
             <div className="textos-total-carrinho">
               <span>Total:</span>
