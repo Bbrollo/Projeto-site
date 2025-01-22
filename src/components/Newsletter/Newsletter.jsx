@@ -1,48 +1,65 @@
 import React, { useState } from "react";
-import './Newsletter.scss';
+import "./Newsletter.scss";
 
 const Newsletter = () => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [copiado, setCopiado] = useState(false);
 
-    const [isSubscribed, setIsSubscribed] = useState(false); 
-    const[copiado, setCopiado] = useState(false)
+  function sendEmailCupom() {
+    setIsSubscribed(true);
+  }
 
-    function sendEmailCupom() {
-        setIsSubscribed(true); 
-    }
+  function copiar() {
+    const textoCupom = "BEMVINDA"; // O texto que você quer copiar
+    const textArea = document.createElement("textarea");
+    textArea.value = textoCupom;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 2000);
+  }
 
-    function copiar(){
-        const textoCupom = "BEMVINDA";  // O texto que você quer copiar
-        const textArea = document.createElement("textarea");
-        textArea.value = textoCupom;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        setCopiado(true);
-        setTimeout(() => setCopiado(false), 2000); 
-        
-    }
-
-    return(
-        <div className="container-newsletter">
-            {isSubscribed ? (
-                <>
-                     <span>Utilize o cupom abaixo e garanta seu desconto!</span>
-                    <div className="container-codigo-desconto">
-                    <span className="codigo-desconto-texto">BEMVINDA</span>
-                        <input type="button" value={copiado ? "Copiado" : "Copiar"} className="btn-copiar-desconto" onClick={copiar}/>
-                    </div>
-                </>
-            ) : (
-                <>
-                    <label htmlFor="email" className="texto-newsletter" >Cadastre-se e receba <strong>10% OFF</strong> na sua primeira compra!</label>
-                    <div className="container-inputs-newsletter">
-                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail" className="input-email"/>
-                        <input type="button" value="ENVIAR" className="btn-enviar-newsletter" onClick={sendEmailCupom}/>
-                    </div>
-                </>
-            )}   
-        </div>
-    );
+  return (
+    <div className="container-newsletter">
+      {isSubscribed ? (
+        <>
+          <span>Utilize o cupom abaixo e garanta seu desconto!</span>
+          <div className="container-codigo-desconto">
+            <span className="codigo-desconto-texto">BEMVINDA</span>
+            <input
+              type="button"
+              value={copiado ? "Copiado" : "Copiar"}
+              className="btn-copiar-desconto"
+              onClick={copiar}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <label htmlFor="email" className="texto-newsletter">
+            Cadastre-se e receba <strong>10% OFF</strong> na sua primeira
+            compra!
+          </label>
+          <div className="container-inputs-newsletter">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Digite seu e-mail"
+              className="input-email"
+            />
+            <input
+              type="button"
+              value="ENVIAR"
+              className="btn-enviar-newsletter"
+              onClick={sendEmailCupom}
+            />
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 export default Newsletter;

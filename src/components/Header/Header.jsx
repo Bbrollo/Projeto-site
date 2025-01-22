@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './Header.scss';
-import PopUpCEP from '../PopUp/PopUpCEP.jsx'
-import useIsMobile from '../../isMobile';
-import MenuLateral from '../MenuLateral/MenuLateral.jsx';
-import Carrinho from '../Carrinho/Carrinho.jsx';
+import React, { useState, useEffect } from "react";
+import "./Header.scss";
+import PopUpCEP from "../PopUp/PopUpCEP.jsx";
+import useIsMobile from "../../isMobile";
+import MenuLateral from "../MenuLateral/MenuLateral.jsx";
+import Carrinho from "../Carrinho/Carrinho.jsx";
 
 const Header = () => {
-  const [cep, setCep] = useState(''); // Estado para armazenar o CEP digitado
+  const [cep, setCep] = useState(""); // Estado para armazenar o CEP digitado
   const [address, setAddress] = useState(null); // Estado para armazenar os dados do endereço
   const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
   const [error, setError] = useState(null); // Estado para armazenar erros
@@ -18,18 +18,18 @@ const Header = () => {
 
   useEffect(() => {
     // Carregar carrinho do localStorage ao inicializar
-    const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")) || [];
     setCarrinho(carrinhoAtual);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log('Scroll position:', window.scrollY); // Debug
+      console.log("Scroll position:", window.scrollY); // Debug
       setIsScrolled(window.scrollY > 0); // Atualiza o estado
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -37,9 +37,9 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen); // Alterna entre aberto/fechado
   };
 
-  const toggleCarrinho =() => {
-    setIsCarrinhoOpen(!isCarrinhoOpen)
-  }
+  const toggleCarrinho = () => {
+    setIsCarrinhoOpen(!isCarrinhoOpen);
+  };
 
   const isMobile = useIsMobile();
 
@@ -57,7 +57,7 @@ const Header = () => {
 
   const getApi = () => {
     if (!cep) {
-      setError('Por favor, insira um CEP válido.');
+      setError("Por favor, insira um CEP válido.");
       return;
     }
     setLoading(true);
@@ -66,13 +66,13 @@ const Header = () => {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Erro ao buscar os dados do CEP');
+          throw new Error("Erro ao buscar os dados do CEP");
         }
         return response.json();
       })
       .then((data) => {
         if (data.erro) {
-          setError('CEP não encontrado.');
+          setError("CEP não encontrado.");
           setAddress(null);
         } else {
           setAddress(data);
@@ -80,62 +80,157 @@ const Header = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setError('Erro ao buscar o endereço.');
+        setError("Erro ao buscar o endereço.");
         setLoading(false);
       });
   };
 
-  
-
   return (
-    <header className={isScrolled ? 'header-scrolled' : 'header-transparent'}>
+    <header className={isScrolled ? "header-scrolled" : "header-transparent"}>
       <div className="local">
-        Você está em {address ? `${cep} - ${address.uf}` : 'São Paulo'}{' '}
-        <a href="#" className="linkLocal" onClick={handleOpenPopup}>Alterar</a>
+        Você está em {address ? `${cep} - ${address.uf}` : "São Paulo"}{" "}
+        <a href="#" className="linkLocal" onClick={handleOpenPopup}>
+          Alterar
+        </a>
       </div>
-     
+
       {isMobile ? (
         <div id="cabecalho-mobile">
-          <nav className='navMobile'>
-            <div className='left-mobile'>
-              <a href="#"><img src={isScrolled ? "/static/images/icone-search-preto.png" : "/static/images/icone-search.png"} alt="Buscar" /></a>
-              <a onClick={toggleMenu} ><img src={isScrolled ? "/static/images/icone-menu-preto.png" : "/static/images/icone-menu.png"} alt="Menu" /></a>
+          <nav className="navMobile">
+            <div className="left-mobile">
+              <a href="#">
+                <img
+                  src={
+                    isScrolled
+                      ? "/static/images/icone-search-preto.png"
+                      : "/static/images/icone-search.png"
+                  }
+                  alt="Buscar"
+                />
+              </a>
+              <a onClick={toggleMenu}>
+                <img
+                  src={
+                    isScrolled
+                      ? "/static/images/icone-menu-preto.png"
+                      : "/static/images/icone-menu.png"
+                  }
+                  alt="Menu"
+                />
+              </a>
             </div>
-            <div className='center-mobile'>
-              <img src={isScrolled ? "/static/images/Logo-bebece-preto.png" : "/static/images/Logo-bebece.png" } alt="Logo Bebecê" className='logo-bebece-header'/>
+            <div className="center-mobile">
+              <img
+                src={
+                  isScrolled
+                    ? "/static/images/Logo-bebece-preto.png"
+                    : "/static/images/Logo-bebece.png"
+                }
+                alt="Logo Bebecê"
+                className="logo-bebece-header"
+              />
             </div>
-            <div className='right-mobile'>
-            <a href="#"><img src={isScrolled ? "/static/images/icone-conta-preto.png" : "/static/images/icone-conta.png"} alt="Conta" /></a>
-            <a onClick={toggleCarrinho}><img src={isScrolled ? "/static/images/icone-carrinho-preto.png" : "/static/images/icone-carrinho.png"} alt="Carrinho" /></a>
-            </div>   
-          </nav>         
+            <div className="right-mobile">
+              <a href="#">
+                <img
+                  src={
+                    isScrolled
+                      ? "/static/images/icone-conta-preto.png"
+                      : "/static/images/icone-conta.png"
+                  }
+                  alt="Conta"
+                />
+              </a>
+              <a onClick={toggleCarrinho}>
+                <img
+                  src={
+                    isScrolled
+                      ? "/static/images/icone-carrinho-preto.png"
+                      : "/static/images/icone-carrinho.png"
+                  }
+                  alt="Carrinho"
+                />
+              </a>
+            </div>
+          </nav>
         </div>
       ) : (
         <div id="cabecalho">
-        <div className='left'>
-          <img src={isScrolled ? "/static/images/Logo-bebece-preto.png" : "/static/images/Logo-bebece.png" } alt="Logo Bebecê" className='logo-bebece-header'/>
-          <nav>
-            <a href="#" className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}>Produto</a>
-            <a href="#" className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}>Lançamentos</a>
-            <a href="#" className="navCabecalhoOutlet">Outlet</a>
+          <div className="left">
+            <img
+              src={
+                isScrolled
+                  ? "/static/images/Logo-bebece-preto.png"
+                  : "/static/images/Logo-bebece.png"
+              }
+              alt="Logo Bebecê"
+              className="logo-bebece-header"
+            />
+            <nav>
+              <a
+                href="#"
+                className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}
+              >
+                Produto
+              </a>
+              <a
+                href="#"
+                className={isScrolled ? "navCabecalhoScrolled" : "navCabecalho"}
+              >
+                Lançamentos
+              </a>
+              <a href="#" className="navCabecalhoOutlet">
+                Outlet
+              </a>
+            </nav>
+          </div>
+
+          <nav className="navIcos">
+            <a href="#">
+              <img
+                src={
+                  isScrolled
+                    ? "/static/images/icone-search-preto.png"
+                    : "/static/images/icone-search.png"
+                }
+                alt="Buscar"
+              />
+            </a>
+            <a href="#">
+              <img
+                src={
+                  isScrolled
+                    ? "/static/images/icone-conta-preto.png"
+                    : "/static/images/icone-conta.png"
+                }
+                alt="Conta"
+              />
+            </a>
+            <a onClick={toggleCarrinho}>
+              <img
+                src={
+                  isScrolled
+                    ? "/static/images/icone-carrinho-preto.png"
+                    : "/static/images/icone-carrinho.png"
+                }
+                alt="Carrinho"
+              />
+            </a>
           </nav>
         </div>
-
-        <nav className="navIcos">
-          <a href="#"><img src={isScrolled ? "/static/images/icone-search-preto.png" : "/static/images/icone-search.png"} alt="Buscar" /></a>
-          <a href="#"><img src={isScrolled ? "/static/images/icone-conta-preto.png" : "/static/images/icone-conta.png"} alt="Conta" /></a>
-          <a onClick={toggleCarrinho}><img src={isScrolled ? "/static/images/icone-carrinho-preto.png" : "/static/images/icone-carrinho.png"} alt="Carrinho" /></a>
-        </nav>
-      </div>
       )}
-      
-      
 
-       <PopUpCEP isOpen={isPopupOpen} 
-        onClose={handleClosePopup} 
-        onSaveCEP={handleSaveCEP} />
-        <MenuLateral isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <Carrinho isCarrinhoOpen={isCarrinhoOpen} toggleCarrinho={toggleCarrinho} carrinho={carrinho}/>
+      <PopUpCEP
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        onSaveCEP={handleSaveCEP}
+      />
+      <MenuLateral isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <Carrinho
+        isCarrinhoOpen={isCarrinhoOpen}
+        toggleCarrinho={toggleCarrinho}
+        carrinho={carrinho}
+      />
     </header>
   );
 };
